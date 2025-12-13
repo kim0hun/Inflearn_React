@@ -1,10 +1,13 @@
 import Header from "./Header.tsx"
+import Footer from "./Footer.tsx"
+import Home from "./Home.tsx";
 
 export default function App() {
   return (
     <>
-      <h1>App Component</h1>
       <Header />
+      <Home />
+      <Footer />
     </>
   );
 }
