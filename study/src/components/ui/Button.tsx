@@ -8,7 +8,7 @@ export default function Button({
 }) {
   return (
     <>
-      <button onClick={(e) => handleClick("하이", e)}>클릭</button>
+      <button onClick={(event) => handleClick("하이", event)}>클릭</button>
     </>
   );
 }
