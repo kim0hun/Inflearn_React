@@ -1,10 +1,10 @@
 export default function Button() {
-  const handleClick = () => alert("클릭 이벤트 발생");
+  const handleClick = (value: string) => alert(value);
 
   return (
     <>
-      <button onClick={handleClick}>클릭</button>
-      <button onDoubleClick={handleClick}>더블클릭</button>
+      <button onClick={() => handleClick("Hello")}>클릭</button >
+      <button onClick={() => alert("World!")}>클릭</button >
     </>
   );
 }
