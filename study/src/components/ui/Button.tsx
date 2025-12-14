@@ -1,11 +1,9 @@
-export default function Button() {
-  const handleClick = () => alert("click");
+export default function Button({ message, children }: { message: string, children: React.ReactNode }) {
+  const handleClick = () => alert(message);
 
   return (
     <>
-      {/* <button onClick={() => alert("click")}>클릭</button > */}
-      <button onClick={handleClick}>클릭</button > {/*매개변수 X*/}
-      <button onClick={() => handleClick()}>클릭</button > {/*매개변수 O*/}
+      <button onClick={handleClick}>{children}</button > {/*매개변수 O*/}
     </>
   );
 }
