@@ -1,19 +1,16 @@
+import Button from "./components/Button";
+
 export default function App() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
+  const handleClick = (message: string) => alert(message);
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <a
-          href="https://ko.wikipedia.org/"
-          onClick={(event) => event.preventDefault()}
-        >
-          위키피디아
-        </a>
-        <button type="submit">전송</button>
-      </form>
+      <Button handleClick={handleClick} message="로그인이 되었습니다.">
+        Login
+      </Button>
+      <Button handleClick={handleClick} message="로그아웃이 되었습니다.">
+        Logout
+      </Button>
     </>
   );
 }
