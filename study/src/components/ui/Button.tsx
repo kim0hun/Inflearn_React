@@ -1,7 +1,9 @@
-export default function Button({ children }: { children: React.ReactNode }) {
+export default function Button() {
+  const handleClick = () => alert("클릭 이벤트 발생");
+
   return (
     <>
-      <button>{children}</button>
+      <button onDoubleClick={handleClick}>클릭</button>
     </>
   );
 }
