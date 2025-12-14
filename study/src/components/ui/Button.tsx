@@ -3,7 +3,8 @@ export default function Button() {
 
   return (
     <>
-      <button onDoubleClick={handleClick}>클릭</button>
+      <button onClick={handleClick}>클릭</button>
+      <button onDoubleClick={handleClick}>더블클릭</button>
     </>
   );
 }
