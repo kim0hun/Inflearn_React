@@ -1,16 +1,16 @@
-import Button from "./components/Button";
-
 export default function App() {
-  const handleClick = (message: string) => alert(message);
-
+  let name = "mike";
+  let age = 20;
+  const handleClick = () => {
+    name = "john";
+    age = 30;
+    console.log(name, age);
+  };
   return (
     <>
-      <Button handleClick={handleClick} message="로그인이 되었습니다.">
-        Login
-      </Button>
-      <Button handleClick={handleClick} message="로그아웃이 되었습니다.">
-        Logout
-      </Button>
+      <p>name: {name}</p>
+      <p>age: {age}</p>
+      <button onClick={handleClick}>change</button>
     </>
   );
 }
