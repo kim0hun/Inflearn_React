@@ -1,28 +1,53 @@
 import { useState } from "react";
 
 export default function App() {
-  const [name, setName] = useState("jack");
-  const [age, setAge] = useState(20);
-  const [gender, setGender] = useState("male");
   const [userInfo, setUserInfo] = useState({
     name: "jack",
     age: 20,
     gender: "male",
+    contact: {
+      email: "jack@example.com",
+      phone: "123-456-7890",
+    },
+    address: {
+      home: {
+        street: "123 Main St",
+        city: "New York",
+        zipCode: "10001",
+      },
+      office: {
+        street: "456 Business Ave",
+        city: "New York",
+        zipCode: "10002",
+      },
+    },
   });
 
   const handleUpdateUserInfo = () => {
-    setUserInfo({
+    setUserInfo((userInfo) => ({
+      ...userInfo,
       name: "mike",
       age: 30,
-      gender: "female",
-    });
+      contact: {
+        ...userInfo.contact,
+        email: "sucoding@naver.com",
+      },
+      address: {
+        home: {
+          ...userInfo.address.home,
+          street: "111 Ave",
+        },
+        office: {
+          ...userInfo.address.office,
+          street: "134 Ave",
+        },
+      },
+    }));
   };
 
   return (
     <>
-      <p>name: {userInfo.name}</p>
-      <p>age: {userInfo.age}</p>
-      <p>gender: {userInfo.gender}</p>
+      <pre>{JSON.stringify(userInfo, null, 2)}</pre>
       <button onClick={handleUpdateUserInfo}>UpdateUserInfo</button>
     </>
   );
