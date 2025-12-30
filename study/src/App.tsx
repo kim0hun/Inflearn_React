@@ -1,10 +1,8 @@
-export default function App() {
-  const isLoggedIn = false;
+import { useState } from "react";
+import Notification from "./components/Notification";
 
-  return (
-    <>
-      {isLoggedIn && <h1>Welcome Back!</h1>}
-      {!isLoggedIn && <h1>Please Sign Up!</h1>}
-    </>
-  );
+export default function App() {
+  // const [showNotification, setShowNotification] = useState<boolean>(false);
+
+  return <Notification />;
 }
