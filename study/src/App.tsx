@@ -1,11 +1,26 @@
-import StatusMessage from "./components/StatusMessage";
+import { useState } from "react";
+import TrafficLight from "./components/TrafficLight";
 
 export default function App() {
-  const status = "un";
+  const [light, setLight] = useState<"red" | "green" | "yellow">("red");
+  const handleChangeLight = () => {
+    setLight((light) => {
+      switch (light) {
+        case "red":
+          return "yellow";
+        case "yellow":
+          return "green";
+        case "green":
+          return "red";
+        default:
+          return "red";
+      }
+    });
+  };
 
   return (
     <>
-      <StatusMessage status={status} />
+      <TrafficLight light={light} handleChangeLight={handleChangeLight} />
     </>
   );
 }
