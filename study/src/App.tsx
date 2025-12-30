@@ -1,14 +1,9 @@
-export default function App() {
-  const fruits = ["apple", "banana", "orange"];
+import FruitList from "./components/FruitList";
 
+export default function App() {
   return (
     <>
-      <p>Fruits Lists</p>
-      <ul>
-        {fruits.map((value, index) => (
-          <li key={index}>{value}</li>
-        ))}
-      </ul>
+      <FruitList />
     </>
   );
 }
