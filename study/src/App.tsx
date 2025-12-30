@@ -1,20 +1,14 @@
-import GuestView from "./components/GuestView";
-import UserInfo from "./components/UserInfo";
-import UserView from "./components/UserView";
+import { useState } from "react";
 
 export default function App() {
-  const isLoggedIn = true;
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   return (
     <>
-      {isLoggedIn ? (
-        <>
-          <UserView />
-          <UserInfo />
-        </>
-      ) : (
-        <GuestView />
-      )}
+      <h1>{isLoggedIn ? "환영합니다" : "로그인이 필요합니다."}</h1>
+      <button onClick={() => setIsLoggedIn((isLoggedIn) => !isLoggedIn)}>
+        {isLoggedIn ? "로그아웃" : "로그인"}
+      </button>
     </>
   );
 }
