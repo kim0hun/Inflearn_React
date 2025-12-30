@@ -1,19 +1,16 @@
-// import GuestView from "./components/GuestView";
-// import UserInfoView from "./components/UserInfoView";
-// import UserView from "./components/UserView";
-
-import Greeting from "./components/Greeting";
+import { useState } from "react";
+import LoginStatus from "./components/LoginStatus";
 
 export default function App() {
-  const isLoggedIn = true;
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const handleLogout = () => setIsLoggedIn(false);
+  const handleLogin = () => setIsLoggedIn(true);
 
-  return <Greeting isLoggedIn={isLoggedIn} />;
-  // if (isLoggedIn)
-  //   return (
-  //     <>
-  //       <UserView />
-  //       <UserInfoView />
-  //     </>
-  //   );
-  // else return <GuestView />;
+  return (
+    <LoginStatus
+      isLoggedIn={isLoggedIn}
+      handleLogin={handleLogin}
+      handleLogout={handleLogout}
+    />
+  );
 }
