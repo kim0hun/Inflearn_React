@@ -1,36 +1,30 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 export default function App() {
-  const items = ["사과", "바나나", "오렌지"];
-  const [fruits, setFruits] = useState(() =>
-    items.map((item) => ({
-      id: uuidv4(),
-      value: item,
-    }))
-  );
-  const handleFruitAdd = () => {
-    setFruits([{ id: uuidv4(), value: "포도" }, ...fruits]);
+  const [items, setItems] = useState([
+    { id: 1, name: "Apple", category: "Fruit" },
+    { id: 2, name: "Carrot", category: "Vegetable" },
+    { id: 3, name: "Banana", category: "Fruit" },
+    { id: 4, name: "Tomato", category: "Vegetable" },
+  ]);
+
+  const handleDelete = (id: number) => {
+    setItems((items) => items.filter((item) => item.id !== id));
   };
 
   return (
     <>
-      <h1>과일목록</h1>
+      <h3>item list</h3>
       <ul>
-        {fruits.map((fruit) => (
-          <li key={fruit.id}>
-            <input type="text" placeholder={fruit.value} />
-          </li>
-        ))}
+        {items
+          // .filter((item) => item.category === "Vegetable")
+          .map((item) => (
+            <li key={item.id}>
+              {item.category} - {item.name}
+              <button onClick={() => handleDelete(item.id)}>Delete</button>
+            </li>
+          ))}
       </ul>
-      <ul>
-        {fruits.map((fruit) => (
-          <li key={fruit.id}>
-            <input type="text" placeholder={fruit.value} />
-          </li>
-        ))}
-      </ul>
-      <button onClick={handleFruitAdd}>과일 추가</button>
     </>
   );
 }
