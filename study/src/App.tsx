@@ -1,12 +1,18 @@
+import classNames from "classnames/bind";
 import styles from "./App.module.css";
-import Module from "./components/Module";
 
 export default function App() {
+  const isLoggedIn = false;
+  const cx = classNames.bind(styles);
+
   return (
     <>
-      <h1 className={styles.title}>CSS MODULE</h1>
-      <h2 className="title">Text</h2>
-      <Module />
+      <button
+        className={`${styles.btn} ${isLoggedIn ? styles["is-active"] : ""}`}
+      >
+        버튼
+      </button>
+      <button className={cx("btn", { "is-active": isLoggedIn })}>버튼</button>
     </>
   );
 }
