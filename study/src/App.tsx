@@ -1,9 +1,10 @@
-import RecipeList from "./components/RecipeList";
+import Global from "./components/Global";
 
 export default function App() {
   return (
     <>
-      <RecipeList />
+      <h1>App Component</h1>
+      <Global />
     </>
   );
 }
