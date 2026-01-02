@@ -1,17 +1,21 @@
-import ButtonGroup from "./components/ButtonGroup";
+import styled from "styled-components";
+
+const Title = styled.h1`
+  color: red;
+  text-decoration: underline;
+`;
+
+const Wrapper = styled.section`
+  padding: 2rem;
+  border: 1px solid red;
+`;
 
 export default function App() {
-  // 초기 버튼 데이터: 각 버튼은 id, label, icon, isDisabled 속성을 가집니다.
-  const initialButtons = [
-    { id: 1, label: "Button 1", icon: "🔥", isDisabled: false },
-    { id: 2, label: "Button 2", icon: "💧", isDisabled: false },
-    { id: 3, label: "Button 3", icon: "🌱", isDisabled: true },
-    { id: 4, label: "Button 4", icon: "⚡", isDisabled: false },
-  ];
-
   return (
     <>
-      <ButtonGroup initialButtons={initialButtons} />
+      <Wrapper>
+        <Title>App Component</Title>
+      </Wrapper>
     </>
   );
 }
