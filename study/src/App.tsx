@@ -1,9 +1,10 @@
-import Calculator from "./components/Calculator";
+import sample from "./assets/images/sample.jpg";
 
 export default function App() {
   return (
     <>
-      <Calculator />
+      <img src="/images/sample.jpg" alt="bicycle"></img>
+      <img src={sample} alt="bicycle"></img>
     </>
   );
 }
