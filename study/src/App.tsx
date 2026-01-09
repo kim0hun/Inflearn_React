@@ -3,8 +3,10 @@ import sample from "./assets/images/sample.jpg";
 export default function App() {
   return (
     <>
-      <img src="/images/sample.jpg" alt="bicycle"></img>
-      <img src={sample} alt="bicycle"></img>
+      <div
+        className={`w-100 h-100`}
+        style={{ backgroundImage: `url(${sample})` }}
+      ></div>
     </>
   );
 }
