@@ -84,8 +84,17 @@ export default function Calculator() {
       isNewNumber: false,
     }));
   };
-  const handleDot = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-    console.log(e.currentTarget.value);
+
+  // . 클릭했을 때 실행되는 함수
+  const handleDot = () => {
+    setCalculatorState((calculatorState) => {
+      if (calculatorState.currentNumber.includes(".")) return calculatorState;
+      return {
+        ...calculatorState,
+        currentNumber: calculatorState.currentNumber + ".",
+        isNewNumber: false,
+      };
+    });
   };
 
   const buttonConfigs: ButtonConfigs[] = [
