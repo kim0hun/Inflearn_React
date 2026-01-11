@@ -20,15 +20,20 @@ const performCalculation = (
   }
 };
 
+const initialData: CalculatorState = {
+  currentNumber: "0", // 현재 입력 표시되는 숫자
+  previousNumber: "", // 이전에 입력된 숫자
+  operation: null, // 현재 선택된 연산자("+", "-", "/", "*")
+  isNewNumber: true, // 새로운 숫자 입력 여부
+};
+
 export default function Calculator() {
-  const [calculatorState, setCalculatorState] = useState<CalculatorState>({
-    currentNumber: "0", // 현재 입력 표시되는 숫자
-    previousNumber: "", // 이전에 입력된 숫자
-    operation: null, // 현재 선택된 연산자("+", "-", "/", "*")
-    isNewNumber: true, // 새로운 숫자 입력 여부
-  });
-  const handleClear = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-    console.log(e.currentTarget.value);
+  const [calculatorState, setCalculatorState] =
+    useState<CalculatorState>(initialData);
+
+  // 'C'를 클릭했을 때 함수
+  const handleClear = () => {
+    setCalculatorState(initialData);
   };
 
   // "+", "-", "*" , "/", "=" 클릭했을 때 실행되는 함수
@@ -61,8 +66,9 @@ export default function Calculator() {
               operation: operator,
               isNewNumber: true,
             };
-      } else if (operator === "=")
+      } else if (operator === "=") {
         return { ...calculatorState, isNewNumber: true };
+      }
       return {
         currentNumber: "",
         previousNumber: current.toString(),
