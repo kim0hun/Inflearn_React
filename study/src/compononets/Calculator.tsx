@@ -1,6 +1,25 @@
 import { useState } from "react";
 import CalculatorButton from "./CalculatorButton";
 
+const performCalculation = (
+  prev: number,
+  current: number,
+  operation: string
+) => {
+  switch (operation) {
+    case "+":
+      return prev + current;
+    case "-":
+      return prev - current;
+    case "*":
+      return prev * current;
+    case "/":
+      return prev / current;
+    default:
+      return current;
+  }
+};
+
 export default function Calculator() {
   const [calculatorState, setCalculatorState] = useState<CalculatorState>({
     currentNumber: "0", // 현재 입력 표시되는 숫자
@@ -11,11 +30,49 @@ export default function Calculator() {
   const handleClear = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
     console.log(e.currentTarget.value);
   };
+
+  // "+", "-", "*" , "/", "=" 클릭했을 때 실행되는 함수
   const handleOperator = (
     e: React.MouseEvent<HTMLInputElement, MouseEvent>
   ) => {
     console.log(e.currentTarget.value);
+    const operator = e.currentTarget.value;
+    setCalculatorState((calculatorState) => {
+      const current = parseFloat(calculatorState.currentNumber);
+
+      if (calculatorState.previousNumber && calculatorState.operation) {
+        const prev = parseFloat(calculatorState.previousNumber);
+        const result = performCalculation(
+          prev,
+          current,
+          calculatorState.operation
+        );
+
+        return operator === "="
+          ? {
+              currentNumber: result.toString(),
+              previousNumber: "",
+              operation: null,
+              isNewNumber: true,
+            }
+          : {
+              currentNumber: "",
+              previousNumber: result.toString(),
+              operation: operator,
+              isNewNumber: true,
+            };
+      } else if (operator === "=")
+        return { ...calculatorState, isNewNumber: true };
+      return {
+        currentNumber: "",
+        previousNumber: current.toString(),
+        operation: operator,
+        isNewNumber: true,
+      };
+    });
   };
+
+  // 0 ~ 9 까지 클릭했을 때 실행되는 함수
   const handleNum = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
     console.log(e.currentTarget.value);
     const value = e.currentTarget.value;
@@ -46,9 +103,9 @@ export default function Calculator() {
     { value: "8", className: "calc-num", onClick: handleNum },
     { value: "9", className: "calc-num", onClick: handleNum },
     { value: "-", className: "calc-operator", onClick: handleOperator },
-    { value: ".", className: "calc-operator", onClick: handleDot },
-    { value: "0", className: "calc-operator", onClick: handleNum },
-    { value: "0", className: "calc-operator", onClick: handleOperator },
+    { value: ".", className: "calc-dot", onClick: handleDot },
+    { value: "0", className: "calc-num", onClick: handleNum },
+    { value: "=", className: "calc-result", onClick: handleOperator },
   ];
 
   return (
