@@ -1,9 +1,9 @@
-import Checkbox from "./compononets/controlled/Checkbox";
+import Radio from "./compononets/controlled/Radio";
 
 export default function App() {
   return (
     <>
-      <Checkbox />
+      <Radio />
     </>
   );
 }
