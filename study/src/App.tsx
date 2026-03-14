@@ -1,9 +1,9 @@
-import Radio from "./compononets/controlled/Radio";
+import Textarea from "./compononets/controlled/Textarea";
 
 export default function App() {
   return (
     <>
-      <Radio />
+      <Textarea />
     </>
   );
 }
