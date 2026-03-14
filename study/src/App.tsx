@@ -1,9 +1,9 @@
-import Input from "./compononets/controlled/Input";
+import Checkbox from "./compononets/controlled/Checkbox";
 
 export default function App() {
   return (
     <>
-      <Input />
+      <Checkbox />
     </>
   );
 }
